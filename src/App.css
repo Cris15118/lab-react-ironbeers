@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-}
+} 
 
 .navbar{
   background-color: aqua;
@@ -11,5 +11,42 @@
   font-size: 30px;
   height: 50px;
   text-decoration: none;
+}
+.container-img{
+ padding: 20px;
+  margin-left: 28%;
+  max-width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+}
+.link-beer{
+  font-size: 18px;
+  
+}
+p{
+  text-align: center;
+}
+.container{
+  display: flex;
+  flex-direction: column;
+ align-items: center;
+ justify-content: flex-end;
+ 
+ 
+  
+}
+
+.cada-beer{
+border-bottom: 1px solid black ;
+  margin: 10px;
+  padding: 20px;
+}
+.image-list{
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 
 }

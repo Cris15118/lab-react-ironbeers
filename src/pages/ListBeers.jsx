@@ -40,20 +40,22 @@ function ListBeers() {
   }
 
   return (
-    <div>
+    <div >
       <header>
         <Link className={"navbar"} to={"/"}>
           <img src={Homeimg} alt="home" width={"40"} />
         </Link>
       </header>
       <h3>Listado de Cervezas</h3>
-
+   
       <input type="text" name="search" value={searchInput} onChange={handleSearchChange} />
-
+ <div className="container">
       {listado.map((eachBeer) => {
         return (
-          <div key={eachBeer._id}>
-            <img src={eachBeer.image_url} alt="beer" width={100} />
+          <div className="cada-beer" key={eachBeer._id}>
+            <div className="image-list">
+            <img src={eachBeer.image_url} alt="beer" width={50} />
+            </div>
             <h5>
               <Link to={`/beers/${eachBeer._id}`}> {eachBeer.name} </Link>{" "}
             </h5>
@@ -62,6 +64,7 @@ function ListBeers() {
           </div>
         );
       })}
+    </div>
     </div>
   );
 }
