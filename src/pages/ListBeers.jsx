@@ -6,17 +6,21 @@ import { ClockLoader } from "react-spinners";
 
 function ListBeers() {
   const navigate = useNavigate();
-  const [listado, setListado ] = useState();
-  const [isLoading, setIsLoading]   = useState(true);
+  const [listado, setListado] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+  const [searchInput, setSearchInput]= useState("")
+
+  const handleSearchChange = (event)=> setSearchInput(event.target.value)
 
   const getData = async () => {
-    
     try {
       const response = await axios.get(
         "https://ih-beers-api2.herokuapp.com/beers"
       );
-     // console.log(response);
+      const search = await axios.get ("https://ih-beers-api2.herokuapp.com/beers/search?q={query}")
+      // console.log(response);
       setListado(response.data);
+      setSearchInput(search.data)
       setIsLoading(false);
     } catch (err) {
       navigate("/error");
@@ -27,7 +31,7 @@ function ListBeers() {
     getData();
   }, []);
 
-  if (isLoading === true ) {
+  if (isLoading === true) {
     return (
       <div>
         <ClockLoader />
@@ -43,6 +47,8 @@ function ListBeers() {
         </Link>
       </header>
       <h3>Listado de Cervezas</h3>
+
+      <input type="text" name="search" value={searchInput} onChange={handleSearchChange} />
 
       {listado.map((eachBeer) => {
         return (
