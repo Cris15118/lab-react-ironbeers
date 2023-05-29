@@ -11,7 +11,10 @@ function ListBeers() {
   const [searchInput, setSearchInput]= useState("")
 
   const handleSearchChange = (event)=> setSearchInput(event.target.value)
-
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    setIsLoading(true);
+  }
   const getData = async () => {
     try {
       const response = await axios.get(
@@ -32,7 +35,7 @@ function ListBeers() {
 
   useEffect(() => {
     getData();
-  }, []);
+  }, [/*searchInput*/]);
 
   if (isLoading === true) {
     return (
@@ -50,8 +53,9 @@ function ListBeers() {
         </Link>
       </header>
       <h3>Listado de Cervezas</h3>
-   
+    <form onSubmit={handleSubmit}>
       <input type="text" name="search" value={searchInput} onChange={handleSearchChange} />
+      </form>
  <div className="container">
       {listado.map((eachBeer) => {
         return (
