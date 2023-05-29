@@ -17,11 +17,14 @@ function ListBeers() {
       const response = await axios.get(
         "https://ih-beers-api2.herokuapp.com/beers"
       );
-      const search = await axios.get ("https://ih-beers-api2.herokuapp.com/beers/search?q={query}")
+      const search = await axios.get ("https://ih-beers-api2.herokuapp.com/beers/?",{
+       searchInput: searchInput
+      })
       // console.log(response);
       setListado(response.data);
       setSearchInput(search.data)
       setIsLoading(false);
+      navigate("/beers")
     } catch (err) {
       navigate("/error");
     }
